@@ -1,18 +1,22 @@
 const Search = () => {
   return (
-    <div className="flex py-10 items-center justify-center max-w-1024-px px-5  bg-blue-400">
+    <div className="flex py-10 items-center justify-center   ">
       <div class="flex">
         <div class="flex border-2 rounded">
-          <div class="flex items-center justify-center px-4 border-r">
+          <div class="flex items-center justify-center px-4 border-r text-gray-500">
             Address
           </div>
-          <input type="text" class="px-4 py-2 w-80" placeholder="" />
+          <input
+            type="text"
+            class="px-4 py-2 w-80"
+            placeholder="0x0000000000000000000000000000000000000000"
+          />
         </div>
       </div>
       <div className="flex justify-center items-center px-5">From</div>
       <div class="">
         <div class="flex border-2 rounded">
-          <div class="flex items-center justify-center px-4 border-r">
+          <div class="flex items-center justify-center px-4 border-r text-gray-500">
             Block
           </div>
           <input type="text" class="px-4 py-2 w-80" placeholder="Default 0" />

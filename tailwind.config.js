@@ -7,6 +7,9 @@ module.exports = {
       spacing: {
         "1024-px": "1024px",
       },
+      textColor: {
+        matisse: "#1D6FA5",
+      },
     },
   },
   variants: {

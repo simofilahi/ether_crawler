@@ -6,8 +6,10 @@ const IndexPage = () => {
   return (
     <div className="h-screen bg-gray-100 flex items-center flex-col">
       <Header />
-      <Search />
-      <TxCard />
+      <div className=" max-w-1024-px">
+        <Search />
+        <TxCard />
+      </div>
     </div>
   );
 };
