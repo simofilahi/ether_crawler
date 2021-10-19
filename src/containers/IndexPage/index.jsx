@@ -42,9 +42,6 @@ const IndexPage = () => {
   // Balance of an address
   const [balance, setBalance] = useState(0);
 
-  // Time stamp of date picker used for get an address balance in a specific date
-  const [timeStamp, setTimeStamp] = useState(0);
-
   // Fetch transaction data of an address
   const FetchTx = async (page) => {
     try {
@@ -95,8 +92,6 @@ const IndexPage = () => {
             balance,
             setBalance,
             FetchBalance,
-            setTimeStamp,
-            timeStamp,
           }}
         >
           <Header />

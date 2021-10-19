@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ant-picker:hover,
+.ant-picker-focused {
+  border-color: #4338ca !important;
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  border: 1px solid #4338ca !important;
+  border-radius: 2px;
+  content: "";
+}
+
+.ant-input:focus {
+  border-color: #4338ca !important;
+}

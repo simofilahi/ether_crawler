@@ -7,6 +7,7 @@ import { GenesisAddress } from "../../constants";
 const BalanceCard = () => {
   // Defaul address use to get the balance
   const [address, setAddress] = useState(GenesisAddress);
+  const [timeStamp, setTimeStamp] = useState(0);
   const txData = useContext(TxContext);
 
   // Address input for getting balance
@@ -21,8 +22,9 @@ const BalanceCard = () => {
             onChange={(e) => {
               setAddress(e.target.value);
             }}
+            value={address === GenesisAddress ? "" : address}
             type="text"
-            class="py-2 h-10  px-2 ms:w-24 md:w-48 lg:w-62 xl:w-80"
+            className="py-2 h-10  px-2 ms:w-24 md:w-48 lg:w-62 xl:w-80"
             placeholder={GenesisAddress}
           />
         </div>
@@ -36,7 +38,7 @@ const BalanceCard = () => {
       <div class="flex justify-center items-center px-4 ">
         <a
           onClick={() => {
-            txData.FetchBalance(address, txData.timeStamp);
+            txData.FetchBalance(address, timeStamp);
           }}
           href="#"
           class="ml-2 lg:ml-8 whitespace-nowrap
@@ -61,7 +63,7 @@ const BalanceCard = () => {
       <div className="flex self-start">
         <AddressInput />
         <div className="px-4 flex justify-center items-center">
-          <CustomDatePicker />
+          <CustomDatePicker setTimeStamp={setTimeStamp} />
         </div>
         <BalanceBtn />
       </div>
