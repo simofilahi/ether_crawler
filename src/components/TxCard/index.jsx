@@ -251,8 +251,30 @@ const TxCard = () => {
     );
   };
 
+  const BackBtn = () => {
+    if (showTxDetails) {
+      return (
+        <div className="py-2">
+          <a
+            onClick={() => {
+              setShowDetails(false);
+            }}
+            href="#"
+            class=" whitespace-nowrap inline-flex
+           items-center justify-center w-24 h-10 border: ;
+            border-transparent rounded-md shadow-sm 
+            text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+          >
+            Back
+          </a>
+        </div>
+      );
+    } else return <></>;
+  };
+
   return (
-    <div class="flex ">
+    <div class="flex  flex-col">
+      <BackBtn />
       <div class="shadow overflow-hidden border-b border-gray-200 w-full h-full bg-white">
         {showTxDetails ? (
           <TxDetails />
