@@ -1,45 +1,31 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { baseUrl } from "../../constants/api";
+import React, { useState, useEffect, useContext } from "react";
 import {
   capitalizeFirstLetter,
   convertWeiToEth,
   timeFormat,
   txHashUtil,
 } from "../../utils";
-import Web3 from "web3";
+import { TxContext } from "../../containers/IndexPage";
 
 const TxCard = () => {
+  const txData = useContext(TxContext);
   const [showTxDetails, setShowDetails] = useState(false);
   const [TxDetailsData, setTxDetailsData] = useState({});
-  const [inputData, updateInputData] = useState({
-    address: "0x0000000000000000000000000000000000000000",
-    startBlock: 0,
-  });
-  const [pages, addPage] = useState([1, 2, 3]);
-  const [currPage, setCurrPage] = useState(1);
-  const [txData, updateTxData] = useState([]);
-
-  const FetchTx = async (page) => {
-    const url = `${baseUrl}/?module=account&action=txlist&address=${inputData.address}&startblock=${inputData.startBlock}\
-    &endblock=99999999&page=${page}&offset=18&sort=asc&apiKey=${process.env.REACT_APP_API_KEY}`;
-
-    console.log({ url });
-    const data = await axios.get(url);
-    updateTxData(data.data.result);
-  };
 
   useEffect(() => {
-    FetchTx(currPage);
+    txData.FetchTx(txData.currPage);
   }, []);
 
   const RightArrowIcon = () => {
     return (
       <a
         onClick={() => {
-          addPage([...pages, pages[pages.length - 1] + 1]);
-          setCurrPage((prevPage) => prevPage + 1);
-          FetchTx(currPage + 1);
+          txData.addPage([
+            ...txData.pages,
+            txData.pages[txData.pages.length - 1] + 1,
+          ]);
+          txData.setCurrPage((prevPage) => prevPage + 1);
+          txData.FetchTx(txData.currPage + 1);
         }}
         href="#"
         class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
@@ -65,9 +51,9 @@ const TxCard = () => {
     return (
       <a
         onClick={() => {
-          if (currPage > 1) {
-            setCurrPage((prevPage) => prevPage - 1);
-            FetchTx(currPage - 1);
+          if (txData.currPage > 1) {
+            txData.setCurrPage((prevPage) => prevPage - 1);
+            txData.FetchTx(txData.currPage - 1);
           }
         }}
         href="#"
@@ -99,17 +85,17 @@ const TxCard = () => {
             aria-label="Pagination"
           >
             <LeftArrowIcon />
-            {pages.map((page) => {
+            {txData.pages.map((page) => {
               return (
                 <a
                   onClick={() => {
-                    setCurrPage(page);
-                    FetchTx(page);
+                    txData.setCurrPage(page);
+                    txData.FetchTx(page);
                   }}
                   href="#"
                   aria-current="page"
                   class={` ${
-                    currPage === page
+                    txData.currPage === page
                       ? "z-10 bg-indigo-50 border-indigo-500 text-indigo-600"
                       : "bg-white border-gray-300 text-gray-500 hover:bg-gray-50"
                   }  relative inline-flex items-center px-4 py-2 border text-sm font-medium`}
@@ -126,7 +112,6 @@ const TxCard = () => {
   };
 
   const TxDetailsRow = (props) => {
-    console.log(props);
     return (
       <div className="flex border-b-2 border-gray-100 py-4 px-2">
         <div className="w-1/3">{capitalizeFirstLetter(props.keyName)}:</div>
@@ -137,7 +122,7 @@ const TxCard = () => {
 
   const TxDetails = () => {
     return (
-      <div className=" flex flex-col">
+      <div className=" flex flex-col bg-white">
         {Object.keys(TxDetailsData).map((key) => {
           console.log({ key });
           return <TxDetailsRow keyName={key} value={TxDetailsData[key]} />;
@@ -149,8 +134,8 @@ const TxCard = () => {
   const Rows = () => {
     return (
       <>
-        {txData.length > 0 &&
-          txData.map((item) => {
+        {txData.txData.length > 0 &&
+          txData.txData.map((item) => {
             console.log({ item });
             return (
               <tr>
@@ -264,7 +249,7 @@ const TxCard = () => {
   const BackBtn = () => {
     if (showTxDetails) {
       return (
-        <div className="py-2">
+        <div className="pb-2">
           <a
             onClick={() => {
               setShowDetails(false);
@@ -283,9 +268,12 @@ const TxCard = () => {
   };
 
   return (
-    <div class="flex  flex-col">
+    <div class=" flex-col">
       <BackBtn />
-      <div class="shadow overflow-hidden border-b border-gray-200 w-full h-full bg-white">
+      <div
+        class="shadow overflow-hidden border-b 
+      border-gray-200 w-full h-full  "
+      >
         {showTxDetails ? (
           <TxDetails />
         ) : (

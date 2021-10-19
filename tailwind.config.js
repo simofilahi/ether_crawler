@@ -5,7 +5,9 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        "1024-px": "1024px",
+        "990-px": "990px",
+        "720-px": "720px",
+        "600-px": "600px",
       },
       textColor: {
         matisse: "#1D6FA5",
