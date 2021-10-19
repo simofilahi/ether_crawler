@@ -1,3 +1,5 @@
+import Web3 from "web3";
+
 export const timeFormat = (timeStamp) => {
   const date = new Date(timeStamp * 1000);
   const moment = new Date();
@@ -22,4 +24,8 @@ export const txHashUtil = (str) => {
 export const capitalizeFirstLetter = (string) => {
   console.log({ string });
   return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+export const convertWeiToEth = (value) => {
+  return Web3.utils.fromWei(value, "ether") + " Ether";
 };
