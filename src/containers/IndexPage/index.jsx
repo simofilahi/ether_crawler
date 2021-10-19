@@ -9,7 +9,7 @@ import TxCard from "../../components/TxCard";
 import React, { useState, createContext } from "react";
 
 // Base url of etherscan api
-import { baseUrl } from "../../constants/api";
+import { baseUrl } from "../../constants";
 
 // Package used for fetching data from web
 import axios from "axios";

@@ -1,5 +1,6 @@
 import { TxContext } from "../../containers/IndexPage";
 import React, { useContext } from "react";
+import { GenesisAddress } from "../../constants";
 
 const Search = () => {
   const txData = useContext(TxContext);
@@ -19,7 +20,7 @@ const Search = () => {
             }}
             type="text"
             class="py-2 px-2 ms:w-24 md:w-48 lg:w-62 xl:w-80"
-            placeholder="0x0000000000000000000000000000000000000000"
+            placeholder={GenesisAddress}
           />
         </div>
       </div>

@@ -2,12 +2,11 @@ import react, { useContext, useState } from "react";
 import { convertWeiToEth } from "../../utils";
 import CustomDatePicker from "../DatePicker";
 import { TxContext } from "../../containers/IndexPage";
+import { GenesisAddress } from "../../constants";
 
 const BalanceCard = () => {
   // Defaul address use to get the balance
-  const [address, setAddress] = useState(
-    "0x0000000000000000000000000000000000000000"
-  );
+  const [address, setAddress] = useState(GenesisAddress);
   const txData = useContext(TxContext);
 
   // Address input for getting balance
@@ -24,7 +23,7 @@ const BalanceCard = () => {
             }}
             type="text"
             class="py-2 h-10  px-2 ms:w-24 md:w-48 lg:w-62 xl:w-80"
-            placeholder="0x0000000000000000000000000000000000000000"
+            placeholder={GenesisAddress}
           />
         </div>
       </div>
@@ -54,12 +53,12 @@ const BalanceCard = () => {
 
   return (
     <div className="bg-white w-full h-24 my-10 flex items-center flex-col">
-      <div className=" flex py-2 w-full justify-start items-center">
-        <div className="px-4">
+      <div className=" flex py-2  w-full  items-center">
+        <div className="px-4 pb-1 ">
           Balance: {convertWeiToEth(txData.balance.toString())}
         </div>
       </div>
-      <div className="flex">
+      <div className="flex self-start">
         <AddressInput />
         <div className="px-4 flex justify-center items-center">
           <CustomDatePicker />
