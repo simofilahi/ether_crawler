@@ -3,9 +3,8 @@ import React, { useContext } from "react";
 
 const Search = () => {
   const txData = useContext(TxContext);
-
-  return (
-    <div className="flex bg-white sm:py-6 md:py-8 lg:py-10 items-center justify-center ">
+  const AddressInput = () => {
+    return (
       <div class="flex">
         <div class="flex border-2 rounded">
           <div class="flex items-center justify-center px-3 lg:px-4 border-r text-gray-500">
@@ -24,9 +23,11 @@ const Search = () => {
           />
         </div>
       </div>
-      <div className="flex justify-center items-center ms:px-2 md:px-3 lg:px-5">
-        From
-      </div>
+    );
+  };
+
+  const BlockInput = () => {
+    return (
       <div class="">
         <div class="flex border-2 rounded">
           <div class="flex items-center justify-center px-3 lg:px-4 border-r text-gray-500">
@@ -45,6 +46,11 @@ const Search = () => {
           />
         </div>
       </div>
+    );
+  };
+
+  const SearchBtn = () => {
+    return (
       <div class="flex justify-center items-center px-5 ">
         <a
           onClick={() => {
@@ -52,14 +58,31 @@ const Search = () => {
           }}
           href="#"
           class="ml-2 lg:ml-8 whitespace-nowrap
-          inline-flex items-center justify-center 
-          sm:px-4 md:px-5 lg:px-6 h-10 border border-transparent rounded-md 
-          shadow-sm text-base font-medium text-white bg-indigo-600 
-          hover:bg-indigo-700"
+      inline-flex items-center justify-center 
+      sm:px-4 md:px-5 lg:px-6 h-10 border border-transparent rounded-md 
+      shadow-sm text-base font-medium text-white bg-indigo-600 
+      hover:bg-indigo-700"
         >
           Search
         </a>
       </div>
+    );
+  };
+
+  const FromTxt = () => {
+    return (
+      <div className="flex justify-center items-center ms:px-2 md:px-3 lg:px-5">
+        From
+      </div>
+    );
+  };
+
+  return (
+    <div className="flex bg-white sm:py-6 md:py-8 lg:py-10 items-center justify-center ">
+      <AddressInput />
+      <FromTxt />
+      <BlockInput />
+      <SearchBtn />
     </div>
   );
 };

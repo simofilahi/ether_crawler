@@ -4,11 +4,13 @@ import CustomDatePicker from "../DatePicker";
 import { TxContext } from "../../containers/IndexPage";
 
 const BalanceCard = () => {
+  // Defaul address use to get the balance
   const [address, setAddress] = useState(
     "0x0000000000000000000000000000000000000000"
   );
   const txData = useContext(TxContext);
 
+  // Address input for getting balance
   const AddressInput = () => {
     return (
       <div className="px-4 flex items-center justify-center">
@@ -29,6 +31,7 @@ const BalanceCard = () => {
     );
   };
 
+  // Get balance button
   const BalanceBtn = () => {
     return (
       <div class="flex justify-center items-center px-4 ">
@@ -48,6 +51,7 @@ const BalanceCard = () => {
       </div>
     );
   };
+
   return (
     <div className="bg-white w-full h-24 my-10 flex items-center flex-col">
       <div className=" flex py-2 w-full justify-start items-center">
@@ -60,7 +64,6 @@ const BalanceCard = () => {
         <div className="px-4 flex justify-center items-center">
           <CustomDatePicker />
         </div>
-
         <BalanceBtn />
       </div>
     </div>

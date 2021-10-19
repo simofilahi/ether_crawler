@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import {
-  capitalizeFirstLetter,
-  convertWeiToEth,
-  timeFormat,
-  txHashUtil,
-} from "../../utils";
+import { convertWeiToEth, timeFormat, txHashUtil } from "../../utils";
 import { TxContext } from "../../containers/IndexPage";
+import TxDetails from "../TxDetails";
 
 const TxCard = () => {
   const txData = useContext(TxContext);
@@ -111,23 +107,67 @@ const TxCard = () => {
     );
   };
 
-  const TxDetailsRow = (props) => {
+  const TxHashCell = (props) => {
     return (
-      <div className="flex border-b-2 border-gray-100 py-4 px-2">
-        <div className="w-1/3">{capitalizeFirstLetter(props.keyName)}:</div>
-        <div className="max-w-xl whitespace-pre-line">{props.value}</div>
-      </div>
+      <td class="px-6 py-4 whitespace-nowrap">
+        <div class="flex items-center">
+          <div class="">
+            <a
+              class="text-sm font-medium  cursor-pointer text-matisse"
+              onClick={() => {
+                setTxDetailsData(props.item);
+                setShowDetails(true);
+              }}
+            >
+              {txHashUtil(props.item.hash)}
+            </a>
+          </div>
+        </div>
+      </td>
     );
   };
 
-  const TxDetails = () => {
+  const TxBlockNumberCell = (props) => {
     return (
-      <div className=" flex flex-col bg-white">
-        {Object.keys(TxDetailsData).map((key) => {
-          console.log({ key });
-          return <TxDetailsRow keyName={key} value={TxDetailsData[key]} />;
-        })}
-      </div>
+      <td class="px-6 py-4 whitespace-nowrap">
+        <div class="text-sm text-gray-900">{props.item.blockNumber}</div>
+      </td>
+    );
+  };
+
+  const TxAgeCell = (props) => {
+    return (
+      <td class="px-6 py-4 whitespace-nowrap">
+        <div class="text-sm text-gray-900">
+          {timeFormat(props.item.timeStamp)}
+        </div>
+      </td>
+    );
+  };
+
+  const TxFromCell = (props) => {
+    return (
+      <td class="px-6 py-4 whitespace-nowrap">
+        <div class="text-sm text-gray-900">{txHashUtil(props.item.from)}</div>
+      </td>
+    );
+  };
+
+  const TxToCell = (props) => {
+    return (
+      <td class="px-6 py-4 whitespace-nowrap">
+        <div class="text-sm text-gray-900">{txHashUtil(props.item.to)}</div>
+      </td>
+    );
+  };
+
+  const TxValueCell = (props) => {
+    return (
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <div class="text-sm text-gray-900">
+          {convertWeiToEth(props.item.value)}
+        </div>
+      </td>
     );
   };
 
@@ -139,43 +179,12 @@ const TxCard = () => {
             console.log({ item });
             return (
               <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="">
-                      <a
-                        class="text-sm font-medium  cursor-pointer text-matisse"
-                        onClick={() => {
-                          setTxDetailsData(item);
-                          setShowDetails(true);
-                        }}
-                      >
-                        {txHashUtil(item.hash)}
-                      </a>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">{item.blockNumber}</div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">
-                    {timeFormat(item.timeStamp)}
-                  </div>
-                </td>
-
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">
-                    {txHashUtil(item.from)}
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">{txHashUtil(item.to)}</div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  <div class="text-sm text-gray-900">
-                    {convertWeiToEth(item.value)}
-                  </div>
-                </td>
+                <TxHashCell item={item} />
+                <TxBlockNumberCell item={item} />
+                <TxAgeCell item={item} />
+                <TxFromCell item={item} />
+                <TxToCell item={item} />
+                <TxValueCell item={item} />
               </tr>
             );
           })}
@@ -275,7 +284,7 @@ const TxCard = () => {
       border-gray-200 w-full h-full  "
       >
         {showTxDetails ? (
-          <TxDetails />
+          <TxDetails TxDetailsData={TxDetailsData} />
         ) : (
           <>
             <Table />
