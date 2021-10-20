@@ -13,7 +13,6 @@ const Search = () => {
           </div>
           <input
             onChange={(e) => {
-              console.log({ e });
               txData.updateInputData({
                 address: e.target.value,
                 startBlock: txData.inputData.startBlock,

@@ -35,8 +35,6 @@ export const convertWeiToEth = (value) => {
 
 // Get balance of a address by block number
 export const getBalanceByBlock = async (address, block) => {
-  console.log(process.env.REACT_APP_WEB3_PROVIDER);
   const web3 = new Web3(process.env.REACT_APP_WEB3_PROVIDER);
-  console.log(await web3.eth.getBalance(address, block));
   return await web3.eth.getBalance(address, block);
 };

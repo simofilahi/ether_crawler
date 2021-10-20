@@ -176,7 +176,6 @@ const TxCard = () => {
       <>
         {txData.txData.length > 0 &&
           txData.txData.map((item) => {
-            console.log({ item });
             return (
               <tr>
                 <TxHashCell item={item} />
