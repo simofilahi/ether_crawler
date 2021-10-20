@@ -258,7 +258,7 @@ const TxCard = () => {
   const BackBtn = () => {
     if (showTxDetails) {
       return (
-        <div className="pb-2">
+        <div className="py-2">
           <a
             onClick={() => {
               setShowDetails(false);

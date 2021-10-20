@@ -6,18 +6,24 @@ const Search = () => {
   const txData = useContext(TxContext);
   const AddressInput = () => {
     return (
-      <div class="flex">
+      <div class="flex px-1">
         <div class="flex border-2 rounded">
           <div class="flex items-center justify-center px-3 lg:px-4 border-r text-gray-500">
             Address
           </div>
           <input
             onChange={(e) => {
+              console.log({ e });
               txData.updateInputData({
                 address: e.target.value,
-                startBlock: txData.inputData,
+                startBlock: txData.inputData.startBlock,
               });
             }}
+            value={
+              txData.inputData.address === GenesisAddress
+                ? ""
+                : txData.inputData.address
+            }
             type="text"
             class="py-2 px-2 ms:w-24 md:w-48 lg:w-62 xl:w-80"
             placeholder={GenesisAddress}
@@ -29,7 +35,7 @@ const Search = () => {
 
   const BlockInput = () => {
     return (
-      <div class="">
+      <div class="px-1">
         <div class="flex border-2 rounded">
           <div class="flex items-center justify-center px-3 lg:px-4 border-r text-gray-500">
             Block
@@ -41,6 +47,11 @@ const Search = () => {
                 address: txData.inputData.address,
               });
             }}
+            value={
+              txData.inputData.startBlock === 0
+                ? ""
+                : txData.inputData.startBlock
+            }
             type="text"
             class="py-2 px-2 ms:w-24 md:w-48 lg:w-62 xl:w-80"
             placeholder=" Default 0"

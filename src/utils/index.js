@@ -25,7 +25,6 @@ export const txHashUtil = (str) => {
 
 // Capitalize the first character of a word
 export const capitalizeFirstLetter = (string) => {
-  console.log({ string });
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 

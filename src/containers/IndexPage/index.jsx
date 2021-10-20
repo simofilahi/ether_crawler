@@ -76,7 +76,7 @@ const IndexPage = () => {
   };
 
   return (
-    <div className="flex w-full h-full items-center justify-center">
+    <div className="flex h-full w-full  items-center bg-gray-100 justify-center">
       <div className="w-full h-24 bg-white flex-1 self-start"></div>
       <div className="w-980-px  flex flex-col absolute top-0 self-center">
         <TxContext.Provider

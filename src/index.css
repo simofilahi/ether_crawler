@@ -22,3 +22,7 @@
 .ant-input:focus {
   border-color: #4338ca !important;
 }
+
+.ant-picker-today-btn {
+  color: #4338ca !important;
+}
