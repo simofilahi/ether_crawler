@@ -6,9 +6,9 @@ const Search = () => {
   const txData = useContext(TxContext);
   const AddressInput = () => {
     return (
-      <div class="flex px-1">
-        <div class="flex border-2 rounded">
-          <div class="flex items-center justify-center px-3 lg:px-4 border-r text-gray-500">
+      <div className="flex px-1">
+        <div className="flex border-2 rounded">
+          <div className="flex items-center justify-center px-3 lg:px-4 border-r text-gray-500">
             Address
           </div>
           <input
@@ -24,7 +24,7 @@ const Search = () => {
                 : txData.inputData.address
             }
             type="text"
-            class="py-2 px-2 ms:w-24 md:w-48 lg:w-62 xl:w-80"
+            className="py-2 px-2 ms:w-24 md:w-48 lg:w-62 xl:w-80"
             placeholder={GenesisAddress}
           />
         </div>
@@ -34,9 +34,9 @@ const Search = () => {
 
   const BlockInput = () => {
     return (
-      <div class="px-1">
-        <div class="flex border-2 rounded">
-          <div class="flex items-center justify-center px-3 lg:px-4 border-r text-gray-500">
+      <div className="px-1">
+        <div className="flex border-2 rounded">
+          <div className="flex items-center justify-center px-3 lg:px-4 border-r text-gray-500">
             Block
           </div>
           <input
@@ -52,7 +52,7 @@ const Search = () => {
                 : txData.inputData.startBlock
             }
             type="text"
-            class="py-2 px-2 ms:w-24 md:w-48 lg:w-62 xl:w-80"
+            className="py-2 px-2 ms:w-24 md:w-48 lg:w-62 xl:w-80"
             placeholder=" Default 0"
           />
         </div>
@@ -62,13 +62,13 @@ const Search = () => {
 
   const SearchBtn = () => {
     return (
-      <div class="flex justify-center items-center px-5 ">
+      <div className="flex justify-center items-center px-5 ">
         <a
           onClick={() => {
             txData.FetchTx(1);
           }}
           href="#"
-          class="ml-2 lg:ml-8 whitespace-nowrap
+          className="ml-2 lg:ml-8 whitespace-nowrap
       inline-flex items-center justify-center 
       sm:px-4 md:px-5 lg:px-6 h-10 border border-transparent rounded-md 
       shadow-sm text-base font-medium text-white bg-indigo-600 
@@ -90,9 +90,9 @@ const Search = () => {
 
   return (
     <div className="flex bg-white sm:py-6 md:py-8 lg:py-10 items-center justify-center ">
-      <AddressInput />
+      {AddressInput()}
       <FromTxt />
-      <BlockInput />
+      {BlockInput()}
       <SearchBtn />
     </div>
   );

@@ -6,7 +6,7 @@ import { GenesisAddress } from "../../constants";
 
 const BalanceCard = () => {
   // Defaul address use to get the balance
-  const [address, setAddress] = useState(GenesisAddress);
+  const [address, setAddress] = useState();
   const [timeStamp, setTimeStamp] = useState(0);
   const txData = useContext(TxContext);
 
@@ -14,15 +14,16 @@ const BalanceCard = () => {
   const AddressInput = () => {
     return (
       <div className="px-4 flex items-center justify-center">
-        <div class="flex border-2 rounded">
-          <div class="flex items-center justify-center px-3 lg:px-4 border-r text-gray-500">
+        <div className="flex border-2 rounded">
+          <div className="flex items-center justify-center px-3 lg:px-4 border-r text-gray-500">
             Address
           </div>
           <input
             onChange={(e) => {
+              e.preventDefault();
               setAddress(e.target.value);
             }}
-            value={address === GenesisAddress ? "" : address}
+            value={address}
             type="text"
             className="py-2 h-10  px-2 ms:w-24 md:w-48 lg:w-62 xl:w-80"
             placeholder={GenesisAddress}
@@ -35,13 +36,13 @@ const BalanceCard = () => {
   // Get balance button
   const BalanceBtn = () => {
     return (
-      <div class="flex justify-center items-center px-4 ">
+      <div className="flex justify-center items-center px-4 ">
         <a
           onClick={() => {
             txData.FetchBalance(address, timeStamp);
           }}
           href="#"
-          class="ml-2 lg:ml-8 whitespace-nowrap
+          className="ml-2 lg:ml-8 whitespace-nowrap
         inline-flex items-center justify-center 
         sm:px-4 md:px-5 lg:px-6 h-10 border border-transparent rounded-md 
         shadow-sm text-base font-medium text-white bg-indigo-600 
@@ -61,7 +62,7 @@ const BalanceCard = () => {
         </div>
       </div>
       <div className="flex self-start">
-        <AddressInput />
+        {AddressInput()}
         <div className="px-4 flex justify-center items-center">
           <CustomDatePicker setTimeStamp={setTimeStamp} />
         </div>
