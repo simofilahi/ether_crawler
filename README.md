@@ -4,7 +4,7 @@ This project is mini web app that explore etherum blockchain
 
 ## Running locally
 
-Follow these steps, you must have [node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) installed:
+Follow these steps, you must have [node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) and [react](https://reactjs.org/) installed:
 
 First clone the repository:
 
