@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/ether_crawler/static/css/main.dd6003f8.chunk.css",
+    "main.js": "/ether_crawler/static/js/main.1f0ca0a7.chunk.js",
+    "main.js.map": "/ether_crawler/static/js/main.1f0ca0a7.chunk.js.map",
+    "runtime-main.js": "/ether_crawler/static/js/runtime-main.d61f1e2d.js",
+    "runtime-main.js.map": "/ether_crawler/static/js/runtime-main.d61f1e2d.js.map",
+    "static/css/2.1d694c59.chunk.css": "/ether_crawler/static/css/2.1d694c59.chunk.css",
+    "static/js/2.9c2b2039.chunk.js": "/ether_crawler/static/js/2.9c2b2039.chunk.js",
+    "static/js/2.9c2b2039.chunk.js.map": "/ether_crawler/static/js/2.9c2b2039.chunk.js.map",
+    "static/js/3.6989bc7b.chunk.js": "/ether_crawler/static/js/3.6989bc7b.chunk.js",
+    "static/js/3.6989bc7b.chunk.js.map": "/ether_crawler/static/js/3.6989bc7b.chunk.js.map",
+    "index.html": "/ether_crawler/index.html",
+    "static/css/2.1d694c59.chunk.css.map": "/ether_crawler/static/css/2.1d694c59.chunk.css.map",
+    "static/css/main.dd6003f8.chunk.css.map": "/ether_crawler/static/css/main.dd6003f8.chunk.css.map",
+    "static/js/2.9c2b2039.chunk.js.LICENSE.txt": "/ether_crawler/static/js/2.9c2b2039.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d61f1e2d.js",
+    "static/css/2.1d694c59.chunk.css",
+    "static/js/2.9c2b2039.chunk.js",
+    "static/css/main.dd6003f8.chunk.css",
+    "static/js/main.1f0ca0a7.chunk.js"
+  ]
+}
